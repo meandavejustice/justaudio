@@ -1,15 +1,19 @@
 {
   "name": "justaudio",
-  "version": "0.0.0",
-  "description": "pass a url and stream audio",
+  "version": "0.1.0",
+  "description": "pass a url or file/directory path and stream audio",
   "main": "index.js",
   "dependencies": {
     "lame": "^1.1.1",
+    "ls-stream": "^1.0.0",
+    "minimist": "^1.1.0",
     "progress": "^1.1.8",
     "request": "^2.40.0",
     "speaker": "^0.2.1"
   },
-  "devDependencies": {},
+  "bin": {
+    "ja": "bin/ja"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +26,14 @@
     "ogg"
   ],
   "author": "meandave",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meandavejustice/justaudio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meandavejustice/justaudio/issues"
+  },
+  "homepage": "https://github.com/meandavejustice/justaudio"
 }

@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+var justAudio = require('../index');
+var minimist = require('minimist');
+var fs = require('fs');
+
+var argv = minimist(process.argv.slice(2), {
+    alias: { h: 'help' }
+});
+
+function printHelp() {
+  fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
+}
+
+if (argv.help) {
+  printHelp();
+  return;
+} else {
+  var arg = argv._[0];
+  if (!arg) {
+    console.log('Must pass an argument! \n \n');
+    printHelp();
+    return;
+  }
+
+  if (justAudio.isURL(arg)) {
+    justAudio.playUrl(arg);
+  } else {
+    justAudio.playLocal(arg);
+  }
+}

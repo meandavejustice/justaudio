@@ -1,0 +1,8 @@
+usage: ja {OPTIONS}
+
+  Play audio
+       Accepts: URLs, Directorys, Files
+
+OPTIONS are:
+
+  -h, --help   Display this usage info
