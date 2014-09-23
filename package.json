@@ -1,6 +1,6 @@
 {
   "name": "justaudio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "pass a url or file/directory path and stream audio",
   "main": "index.js",
   "dependencies": {

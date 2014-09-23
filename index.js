@@ -13,14 +13,12 @@ var speaker = new Speaker({
   sampleRate: 44100     // 44,100 Hz sample rate
 });
 
-// console.log(process.argv.slice(2));
-
 module.exports = {
   isURL: isURL,
   playUrl: playUrl,
   playLocal: playLocal,
   playFile: playFile,
-  playDirectory: playDirectory,
+  playDirectory: playDirectory
 };
 
 function playUrl(url, nodata) {
