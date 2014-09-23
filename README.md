@@ -1,6 +1,6 @@
 # justaudio
 
-<!-- [![NPM](https://nodei.co/npm/justaudio.png?downloads=true)](https://npmjs.org/package/justaudio) -->
+[![NPM](https://nodei.co/npm/justaudio.png?downloads=true)](https://npmjs.org/package/justaudio)
 
 ## Command Line Usage
 ```
