@@ -1,6 +1,6 @@
 {
   "name": "justaudio",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "pass a url or file/directory path and stream audio",
   "main": "index.js",
   "dependencies": {
@@ -23,7 +23,8 @@
     "streaming",
     "mp3",
     "wav",
-    "ogg"
+    "ogg",
+    "stream"
   ],
   "author": "meandave",
   "license": "MIT",

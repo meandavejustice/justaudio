@@ -7,11 +7,13 @@ var request = require('request');
 var Speaker = require('speaker');
 var ProgressBar = require('progress');
 
-var speaker = new Speaker({
-  channels: 2,          // 2 channels
-  bitDepth: 16,         // 16-bit samples
-  sampleRate: 44100     // 44,100 Hz sample rate
-});
+function getSpeaker() {
+  return new Speaker({
+    channels: 2,          // 2 channels
+    bitDepth: 16,         // 16-bit samples
+    sampleRate: 44100     // 44,100 Hz sample rate
+  });
+}
 
 module.exports = {
   isURL: isURL,
@@ -21,11 +23,12 @@ module.exports = {
   playDirectory: playDirectory
 };
 
-function playUrl(url, nodata) {
-  request(url)
-  .on('response', displayData)
-  .pipe(new lame.Decoder())
-  .pipe(speaker);
+function playUrl(url, nodata, cb) {
+  var speaker = getSpeaker();
+  if (cb) speaker.on('close', cb);
+  var stream = request(url);
+  if (!nodata) stream.on('response', displayData)
+  stream.pipe(new lame.Decoder()).pipe(speaker);
 }
 
 function isURL(url) {
@@ -48,7 +51,6 @@ function displayData(stream, data, cb) {
 
   console.log('\n');
 
-  console.log(stream);
   stream.on('end', function () {
     if (cb) {
       cb();
@@ -94,13 +96,12 @@ function playDirectory(path, cb) {
 }
 
 function playFile(path, cb) {
-  console.log(path);
+  // console.log(path);
+  var speaker = getSpeaker();
+  if (cb) speaker.on('close', cb);
   fs.createReadStream(path)
-  .on('data', function(stream) {
-    // displayData(stream, null, cb);
-  })
-  .on('end', function() {
-    if (cb) cb();
+  .on('data', function(data) {
+    // displayData(this, data, cb);
   })
   .pipe(new lame.Decoder())
   .pipe(speaker);
